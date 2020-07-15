@@ -1,0 +1,266 @@
+/***** Custom Scrollbar mixin *****/
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+/* === Fonts === */
+@font-face {
+  font-family: "Libre Caslon Text";
+  src: url("../fonts/LibreCaslonText.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat.woff2") format("woff2");
+}
+
+/* ===============
+   GLOBAL SETTINGS 
+   =============== */
+
+:root {
+  --bg-opacity: 1;
+  --title-font: "Libre Caslon Text", serif;
+  --body-font: "Montserrat", sans-serif;
+  --bg-gray-800: rgba(45, 55, 72, var(--bg-opacity));
+  --bg-gray-900: rgba(26, 32, 44, var(--bg-opacity));
+  --bg-gray-1000: rgba(20, 24, 33, var(--bg-opacity));
+  --bg-green-500: rgba(72, 187, 120, var(--bg-opacity));
+}
+
+// Smooth Scrolling with CSS
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  @include scrollbars(10px, var(--bg-green-500), var(--bg-gray-900));
+}
+
+a {
+  cursor: pointer;
+}
+section {
+  scroll-snap-type: y mandatory;
+  > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* Typography
+   ============================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title-font {
+  font-family: var(--title-font);
+}
+
+p,
+span,
+input,
+input::placeholder,
+.body-font {
+  font-family: var(--body-font);
+}
+.current {
+  color: white;
+}
+
+/***** Section Titles *****/
+.title {
+  position: relative;
+  z-index: 0;
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: var(--bg-green-500);
+    z-index: -1;
+    transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+    transition-delay: 0.5s;
+    opacity: 0;
+  }
+  &::before {
+    width: 125px;
+    height: 6px;
+    bottom: 36px;
+    transform: translateX(-100px);
+  }
+  &::after {
+    width: 125px;
+    height: 50%;
+    transform: translateX(100px);
+  }
+}
+
+/***** Responsive mobile menu *****/
+nav.mobile-menu {
+  display: flex;
+  position: absolute;
+  top: 90px;
+  left: 0;
+  background-color: var(--bg-gray-1000);
+  flex-direction: column;
+  width: 100%;
+  animation: slideIn 0.2s linear forwards;
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  a {
+    padding: 10px 0;
+  }
+}
+
+/***** Splitting animation *****/
+.splitting {
+  overflow: hidden;
+  .char {
+    opacity: 1;
+    transition: transform 0.2s cubic-bezier(0.3, 0, 0.3, 1), opacity 0.3s linear;
+    transition-delay: calc(20ms * var(--char-index));
+  }
+
+  &[data-scroll="out"] .char {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+}
+
+// Scrolling to top
+.scrollToTop {
+  opacity: 0;
+  height: 30px;
+  width: 30px;
+  bottom: 30px;
+  right: 20px;
+  background-color: var(--bg-green-500);
+  transform: translateY(50px);
+  transition: transform 0.3s ease-in-out;
+  stroke: white;
+  &.slideUp {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/***** Sliding animations *****/
+
+.slideLeft-animate,
+.slideUp-animate,
+.slideRight-animate {
+  opacity: 0;
+  transition: transform 0.7s ease-in-out, opacity 0.4s ease-in-out;
+}
+.slideLeft-animate {
+  transform: translateX(-50px);
+}
+.slideUp-animate {
+  transform: translateY(50px);
+}
+.slideRight-animate {
+  transform: translateX(50px);
+}
+.delay-100 {
+  transition-delay: 100ms;
+}
+.delay-150 {
+  transition-delay: 150ms;
+}
+.delay-200 {
+  transition-delay: 200ms;
+}
+.delay-300 {
+  transition-delay: 300ms;
+}
+.delay-400 {
+  transition-delay: 400ms;
+}
+.delay-500 {
+  transition-delay: 500ms;
+}
+.delay-600 {
+  transition-delay: 600ms;
+}
+.delay-700 {
+  transition-delay: 700ms;
+}
+.delay-800 {
+  transition-delay: 800ms;
+}
+[data-scroll] {
+  transition: opacity 1s;
+}
+[data-scroll="in"] {
+  opacity: 1;
+
+  /***** tittle class animation *****/
+  .title {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+    &::before {
+      transform: translateX(-25px);
+    }
+    &::after {
+      transform: translateX(-100px);
+    }
+  }
+
+  .slideUp-animate,
+  .slideLeft-animate,
+  .slideRight-animate {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+[data-scroll="out"] {
+  .title {
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+    &::before {
+      transform: translateX(-100px);
+    }
+    &::after {
+      transform: translateX(100px);
+    }
+  }
+}

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohd Roman - A Dynamic Website Builder</title>
+    <link
+      rel="shortcut icon"
+      href="assets/images/mohd.jpg"
+      type="image/x-icon"
+    />
+    <!-- Tailwind CSS -->
+    <link href="assets/css/tailwind.min.css" rel="stylesheet" />
+    <!-- splitting CSS -->
+    <link href="assets/css/splitting.css" rel="stylesheet" />
+    <!-- Glide Carousel -->
+    <link href="assets/css/glide.core.min.css" rel="stylesheet" />
+    <link href="assets/css/glide.theme.min.css" rel="stylesheet" />
+    <!-- Our Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      /* ==[ /* ==[ Page Loader ]== */
+      .loader {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background: aliceblue;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        background: #1a202c;
+        z-index: 999;
+      }
+
+      .loader.end {
+        width: 0;
+        height: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .windows8 {
+        position: relative;
+        width: 78px;
+        height: 78px;
+        margin: auto;
+      }
+
+      .windows8 .wBall {
+        position: absolute;
+        width: 74px;
+        height: 74px;
+        opacity: 0;
+        -webkit-transform: rotate(225deg);
+        transform: rotate(225deg);
+        -webkit-animation: orbit 6.96s infinite;
+        animation: orbit 6.96s infinite;
+      }
+
+      .windows8 .wBall .wInnerBall {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #06b557;
+        left: 0px;
+        top: 0px;
+        border-radius: 10px;
+      }
+
+      .windows8 #wBall_1 {
+        -webkit-animation-delay: 1.52s;
+        animation-delay: 1.52s;
+      }
+
+      .windows8 #wBall_2 {
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+      }
+
+      .windows8 #wBall_3 {
+        -webkit-animation-delay: 0.61s;
+        animation-delay: 0.61s;
+      }
+
+      .windows8 #wBall_4 {
+        -webkit-animation-delay: 0.91s;
+        animation-delay: 0.91s;
+      }
+
+      .windows8 #wBall_5 {
+        -webkit-animation-delay: 1.22s;
+        animation-delay: 1.22s;
+      }
+
+      @-webkit-keyframes orbit {
+        0% {
+          opacity: 1;
+          z-index: 99;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+        }
+        7% {
+          opacity: 1;
+          -webkit-transform: rotate(300deg);
+          transform: rotate(300deg);
+          -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          origin: 0%;
+        }
+        30% {
+          opacity: 1;
+          -webkit-transform: rotate(410deg);
+          transform: rotate(410deg);
+          -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+          origin: 7%;
+        }
+        39% {
+          opacity: 1;
+          -webkit-transform: rotate(645deg);
+          transform: rotate(645deg);
+          -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          origin: 30%;
+        }
+        70% {
+          opacity: 1;
+          -webkit-transform: rotate(770deg);
+          transform: rotate(770deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+          origin: 39%;
+        }
+        75% {
+          opacity: 1;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+          origin: 70%;
+        }
+        76% {
+          opacity: 0;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+        }
+        100% {
+          opacity: 0;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+        }
+      }
+
+      @keyframes orbit {
+        0% {
+          opacity: 1;
+          z-index: 99;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+        }
+        7% {
+          opacity: 1;
+          -webkit-transform: rotate(300deg);
+          transform: rotate(300deg);
+          -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          origin: 0%;
+        }
+        30% {
+          opacity: 1;
+          -webkit-transform: rotate(410deg);
+          transform: rotate(410deg);
+          -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+          origin: 7%;
+        }
+        39% {
+          opacity: 1;
+          -webkit-transform: rotate(645deg);
+          transform: rotate(645deg);
+          -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          origin: 30%;
+        }
+        70% {
+          opacity: 1;
+          -webkit-transform: rotate(770deg);
+          transform: rotate(770deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+          origin: 39%;
+        }
+        75% {
+          opacity: 1;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+          origin: 70%;
+        }
+        76% {
+          opacity: 0;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+        }
+        100% {
+          opacity: 0;
+          -webkit-transform: rotate(900deg);
+          transform: rotate(900deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page loader -->
+    <div class="loader">
+      <div class="windows8">
+        <div class="wBall" id="wBall_1">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_2">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_3">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_4">
+          <div class="wInnerBall"></div>
+        </div>
+        <div class="wBall" id="wBall_5">
+          <div class="wInnerBall"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll To Top Icon -->
+    <span
+      class="scrollToTop fixed rounded-full cursor-pointer z-10"
+      onclick="scrollToTop()"
+    >
+      <svg
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+        height="30"
+        width="30"
+        class="absolute top-0 left-0"
+      >
+        <defs>
+          <style>
+            .cls-1 {
+              fill: none;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-width: 2px;
+            }
+          </style>
+        </defs>
+        <title />
+        <g id="chevron-top">
+          <line class="cls-1" x1="16" x2="25" y1="11.5" y2="20.5" />
+          <line class="cls-1" x1="7" x2="16" y1="20.5" y2="11.5" />
+        </g>
+      </svg>
+    </span>
+    <!-- Header -->
+    <header
+      class="text-gray-500 bg-gray-900 body-font w-full sticky z-20 top-0"
+      data-scroll
+    >
+      <div
+        class="container mx-auto flex p-5 md:p-3 md:flex-row items-center justify-between relative"
+      >
+        <a
+          class="flex title-font font-medium items-center text-white mb-4 md:mb-0"
+          href="#"
+        >
+          <!-- Logo icon -->
+          
+          <span class="ml-2 text-2xl uppercase title-font">Mohd Roman</span>
+        </a>
+        <!-- Mobile menu icon -->
+        <div
+          class="-mr-2 flex items-center border border-gray-800 rounded lg:hidden"
+          id="menu-icon"
+        >
+          <button
+            type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+          >
+            <svg
+              class="h-6 w-6"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+        <!-- navigation menu -->
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center hidden lg:block"
+        >
+          <a class="mr-5 hover:text-white" href="#hero">Home</a>
+          <a class="mr-5 hover:text-white" href="#services">Services</a>
+          <a class="mr-5 hover:text-white" href="#about">About</a>
+          <a class="mr-5 hover:text-white" href="#works">Works</a>
+          <a class="mr-5 hover:text-white" href="#contact">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="text-gray-500 bg-gray-900 body-font"
+        id="hero"
+        data-scroll
+      >
+        <div
+          class="container mx-auto flex px-5 lg:py-24 md:flex-row py-16 flex-col items-center"
+        >
+          <div
+            class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center slideLeft-animate"
+          >
+            <h1
+              class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white"
+            >
+              I'm a freelance
+              <br class="hidden lg:inline-block" />Web Designer & Developer
+            </h1>
+            <p class="mb-8 leading-relaxed">
+              Hi there, I'm a Student of Computer Science and also Web Designer & Developer and do coding, design, and layout of a website according to the client's requirements. I have a excellent experience in HTML5, CSS3, Bootstrap, JavaScript, PHP, MySQL, Laravel & WordPress.
+            </p>
+            <!-- Main CTA Buttons -->
+            <div class="flex justify-center">
+              <a
+                href="https://www.fiverr.com/mohd_roman"
+                class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg slideUp-animate"
+              >
+                Hire Me
+              </a>
+              <a
+                href="#works"
+                class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg slideUp-animate delay-100"
+              >
+                See Works
+              </a>
+            </div>
+          </div>
+          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 slideRight-animate">
+            <img
+              loading="lazy"
+              class="object-cover object-center rounded"
+              alt="hero"
+              src="assets/images/dev_productivity.svg"
+              data-src="assets/images/dev_productivity.svg"
+              width="500"
+              height="450"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Section -->
+      <section
+        class="text-gray-500 bg-gray-800 body-font"
+        id="services"
+        data-scroll
+      >
+        <div class="container px-5 py-24 mx-auto">
+          <h2
+            class="text-5xl text-white text-center font-bold p-10 mb-10 title"
+          >
+          My Services
+          </h2>
+          <div class="text-center mb-20">
+            <h3
+              class="sm:text-3xl text-2xl font-medium text-center title-font text-white mb-4"
+              data-splitting
+            >
+              What Can I Do For You?
+            </h3>
+            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+              I have a excellent experience in HTML5, CSS3, Bootstrap, JavaScript, PHP, MySQL, Laravel & WordPress.
+            </p>
+          </div>
+          <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-100">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >Full Website Creation</span
+                >
+              </div>
+            </div>
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-100">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >Customization & Bug Fixes</span
+                >
+              </div>
+            </div>
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-150">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >Performance & Security</span
+                >
+              </div>
+            </div>
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-150">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >Backup, Cloning & Migration</span
+                >
+              </div>
+            </div>
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-200">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >PSD to HTML</span
+                >
+              </div>
+            </div>
+            <div class="p-2 sm:w-1/2 w-full slideUp-animate delay-200">
+              <div class="bg-gray-900 rounded flex p-4 h-full items-center">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span class="title-font font-medium text-white"
+                  >Domain & Hosting</span
+                >
+              </div>
+            </div>
+          </div>
+          <button
+            class="flex mx-auto mt-16 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg slideUp-animate"
+          >
+            <a href="#works"> See Gallery</a>
+          </button>
+        </div>
+      </section>
+
+      <!-- Content/About Section -->
+      <section
+        class="text-gray-500 bg-gray-900 body-font"
+        id="about"
+        data-scroll
+      >
+        <div class="container px-5 py-24 mx-auto flex flex-col">
+          <h2
+            class="text-5xl text-white text-center font-bold p-10 mb-10 title"
+          >
+            About Me
+          </h2>
+          <div class="lg:w-4/6 mx-auto">
+            <div class="rounded-lg h-64 overflow-hidden">
+              <img
+                loading="lazy"
+                alt="content"
+                class="object-fit object-center h-full w-full"
+                src="assets/images/searching.svg"
+                data-src="assets/images/searching.svg"
+                width="820"
+                height="256"
+              />
+            </div>
+            <div class="flex flex-col sm:flex-row mt-10">
+              <div
+                class="sm:w-1/3 text-center sm:pr-8 sm:py-8 slideLeft-animate delay-200"
+              >
+                <div
+                  class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-800 text-gray-600"
+                >
+                    <img src="assets/images/mohd.jpg" class="rounded-full" alt="mohd">
+                </div>
+                <div
+                  class="flex flex-col items-center text-center justify-center"
+                >
+                  <h2 class="font-medium title-font mt-4 text-white text-lg">
+                    Mohd Roman
+                  </h2>
+                  <div class="w-12 h-1 bg-green-500 rounded mt-2 mb-4"></div>
+                  <p class="text-base text-gray-600">
+                    Web Desinger & Developer
+                  </p>
+                </div>
+              </div>
+              <div
+                class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-800 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left slideRight-animate delay-200"
+              >
+                <p class="leading-relaxed text-lg mb-4">
+                  Hi there, I'm Mohd Roman Biswas of Bangladesh. My work builds a website by your requirements. And at the same time like a professional website. My creativity & uniqueness always will give you a better one. In my leisure time, I also doing film directing, editing & graphics works.
+                </p>
+                <a class="text-green-500 inline-flex items-center"
+                  >Learn More
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="w-4 h-4 ml-2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="text-gray-500 bg-gray-800 body-font pt-16" data-scroll>
+        <h2 class="text-5xl text-white text-center font-bold p-10 title">
+          Educational
+        </h2>
+        <div class="container px-5 py-24 mx-auto flex flex-wrap">
+          <div
+            class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto slideUp-animate delay-300"
+          >
+            <div
+              class="h-full w-6 absolute inset-0 flex items-center justify-center"
+            >
+              <div class="h-full w-1 bg-gray-900 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm"
+            >
+              1
+            </div>
+            <div
+              class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+            >
+              <div
+                class="flex-shrink-0 w-24 h-24 bg-gray-800 text-green-400 rounded-full inline-flex items-center justify-center"
+              >
+              <svg 
+              fill="currentColor" 
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-12 h-12"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 511">
+              <defs/>
+              <g>
+                <g>
+                  <path d="M392,0H88C65.92,0.026,48.026,17.92,48,40v216c0.026,22.08,17.92,39.974,40,40h109.392l-11.424,40H160v16h160v-16h-25.968
+                    l-11.424-40H392c22.08-0.026,39.974-17.92,40-40V40C431.974,17.92,414.08,0.026,392,0z M202.608,336l11.424-40h51.936l11.424,40
+                    H202.608z M416,256c0,13.255-10.745,24-24,24H88c-13.255,0-24-10.745-24-24v-16h352V256z M416,224H64V40c0-13.255,10.745-24,24-24
+                    h304c13.255,0,24,10.745,24,24V224z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M304,368H80c-4.418,0-8,3.582-8,8v96c0,4.418,3.582,8,8,8h224c4.418,0,8-3.582,8-8v-96C312,371.582,308.418,368,304,368z
+                     M296,464H88v-80h208V464z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="104" y="432" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="104" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="136" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="168" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="232" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="200" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="264" y="432" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="264" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="136" y="432" width="112" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M368,368c-22.091,0-40,17.909-40,40v32c0,22.091,17.909,40,40,40c22.091,0,40-17.909,40-40v-32
+                    C408,385.909,390.091,368,368,368z M392,440c0,13.255-10.745,24-24,24s-24-10.745-24-24v-32c0-13.255,10.745-24,24-24
+                    s24,10.745,24,24V440z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="360" y="400" width="16" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  
+                    <rect x="181.737" y="120.139" transform="matrix(0.2751 -0.9614 0.9614 0.2751 50.7457 323.5759)" width="116.43" height="15.993"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M197.12,94.144l-10.24-12.288l-48,40c-3.393,2.83-3.85,7.874-1.02,11.268c0.309,0.37,0.65,0.712,1.02,1.02l48,40
+                    l10.24-12.288L156.496,128L197.12,94.144z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M342.14,122.876c-0.309-0.37-0.65-0.712-1.02-1.02l-48-40l-10.24,12.288L323.504,128l-40.624,33.856l10.24,12.288l48-40
+                    C344.513,131.314,344.97,126.27,342.14,122.876z"/>
+                </g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              </svg>
+
+              </div>
+              <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                <h2
+                  class="font-medium title-font text-white mb-1 text-xl"
+                  data-splitting
+                >
+                  Diploma in Engineering of Computer Technology
+                </h2>
+                <p class="leading-relaxed">
+                  In this course, I learned about computer hardware and software on how to works behind the system processes.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto slideUp-animate delay-400"
+          >
+            <div
+              class="h-full w-6 absolute inset-0 flex items-center justify-center"
+            >
+              <div class="h-full w-1 bg-gray-900 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm"
+            >
+              2
+            </div>
+            <div
+              class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+            >
+              <div
+                class="flex-shrink-0 w-24 h-24 bg-gray-800 text-green-400 rounded-full inline-flex items-center justify-center"
+              >
+              <svg 
+              id="Capa_1" 
+              enable-background="new 0 0 512.017 512.017" 
+              class="w-12 h-12"
+              viewBox="0 0 512.017 512.017" 
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <g>
+                  <path d="M472,224h-32v-8h16c4.422,0,8-3.578,8-8v-24c0-4.422-3.578-8-8-8h-16v-8c0-4.422-3.578-8-8-8h-48c-4.422,0-8,3.578-8,8v56
+                    h-28.183l11.612-29.031c0.555-1.398,0.711-2.922,0.438-4.406l-1.664-9.164c-6.694-36.852-32.426-66.674-67.047-79.103
+                    C299.182,91.602,304,78.369,304,64c0-35.289-28.711-64-64-64s-64,28.711-64,64c0,14.369,4.818,27.602,12.844,38.296
+                    c-34.621,12.428-60.353,42.25-67.04,79.095l-1.672,9.172c-0.273,1.484-0.117,3.008,0.438,4.406L132.183,224H112v-24v-25.474
+                    c9.292-3.313,16-12.11,16-22.526c0-13.234-10.766-24-24-24H24c-4.422,0-8,3.578-8,8v25.474C6.708,164.787,0,173.584,0,184
+                    c0,6.169,2.404,11.744,6.242,16C2.404,204.256,0,209.831,0,216c0,3.699,0.911,7.163,2.412,10.295C0.929,227.747,0,229.759,0,232
+                    v32c0,4.422,3.578,8,8,8h16v200c0,4.422,3.578,8,8,8h32c4.422,0,8-3.578,8-8V272h72.205c-5.077,6.706-8.205,14.96-8.205,24v24h-16
+                    c-4.422,0-8,3.578-8,8v152h16V336h26.529l10.887,110.221C162.002,451.31,160,457.423,160,464v8c0,4.422,3.578,8,8,8h48
+                    c4.422,0,8-3.578,8-8v-8c0-6.577-2.002-12.69-5.417-17.78L229.461,336h21.155l12.073,108.645C258.556,450.036,256,456.695,256,464
+                    v8c0,4.422,3.578,8,8,8h48c4.422,0,8-3.578,8-8v-8c0-7.305-2.555-13.965-6.689-19.356L325.367,336H352v144h16V328
+                    c0-4.422-3.578-8-8-8h-16v-24c0-9.04-3.128-17.294-8.205-24H408v200c0,4.422,3.578,8,8,8h32c4.422,0,8-3.578,8-8V272h16
+                    c4.422,0,8-3.578,8-8v-32C480,227.578,476.422,224,472,224z M440,192h8v8h-8V192z M392,176h32v48h-32V176z M240,16
+                    c26.469,0,48,21.531,48,48s-21.531,48-48,48s-48-21.531-48-48S213.531,16,240,16z M137.547,184.258
+                    c6.117-33.722,31.089-60.477,64.053-69.18C212.312,123.151,225.584,128,240,128s27.688-4.849,38.4-12.922
+                    c32.964,8.703,57.937,35.459,64.061,69.188l1.258,6.906L330.583,224H312v-72c0-4.422-3.578-8-8-8H176c-4.422,0-8,3.578-8,8v72
+                    h-18.583l-13.136-32.836L137.547,184.258z M296,160v64H184v-64H296z M32,144h72c4.414,0,8,3.586,8,8s-3.586,8-8,8H32V144z M24,176
+                    h72v16H24c-4.414,0-8-3.586-8-8S19.586,176,24,176z M24,208h72v16H24c-4.414,0-8-3.586-8-8S19.586,208,24,208z M56,464H40V272h16
+                    V464z M176,464c0-8.82,7.18-16,16-16s16,7.18,16,16H176z M214.266,327.164l-10.581,107.118C200.056,432.85,196.133,432,192,432
+                    c-4.133,0-8.057,0.85-11.686,2.282l-10.556-106.774c-0.336-6.172,1.813-12.047,6.063-16.539c8.5-8.984,23.859-8.984,32.359,0
+                    C212.43,315.461,214.578,321.336,214.266,327.164z M272,464c0-8.82,7.18-16,16-16s16,7.18,16,16H272z M310.273,327.07
+                    l-11.869,106.813C295.125,432.746,291.662,432,288,432c-3.663,0-7.126,0.747-10.406,1.884l-11.836-106.376
+                    c-0.336-6.172,1.813-12.047,6.063-16.539c8.5-8.984,23.859-8.984,32.359,0C308.43,315.461,310.578,321.336,310.273,327.07z
+                     M328,320h-2.281c-1.218-7.459-4.581-14.388-9.922-20.031C308.492,292.25,298.625,288,288,288s-20.492,4.25-27.797,11.969
+                    c-5.299,5.599-8.635,12.472-9.866,20.031h-20.619c-1.218-7.459-4.581-14.388-9.922-20.031C212.492,292.25,202.625,288,192,288
+                    s-20.492,4.25-27.797,11.969c-5.308,5.609-8.649,12.493-9.878,20.031H152v-24c0-13.234,10.766-24,24-24h128
+                    c13.234,0,24,10.766,24,24V320z M440,464h-16V272h16V464z M464,256H16v-16h448V256z"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="216" y="184" width="48" height="16"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="408" y="120" width="16" height="24"/>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <rect x="384" y="104" width="16" height="32"/>
+                </g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              </svg>
+              </div>
+              <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                <h2
+                  class="font-medium title-font text-white mb-1 text-xl"
+                  data-splitting
+                >
+                  Secondary School Certificate
+                </h2>
+                <p class="leading-relaxed">
+                  In this course, I learned the aesthetics of mathematics, physics, chemistry, biology, and computer.
+                </p>
+              </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section
+        class="text-gray-500 bg-gray-900 body-font"
+        id="works"
+        data-scroll
+      >
+        <div class="container px-5 py-24 mx-auto">
+          <h2
+            class="text-5xl text-white text-center font-bold p-10 mb-10 title"
+          >
+            Works
+          </h2>
+          <div class="flex flex-col text-center w-full mb-20">
+            <h3
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white"
+              data-splitting
+            >
+              What I have made?
+            </h3>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              I create websites and at the same time performance optimized for fastest page loading speed like a rocket, and do maintenance for security purposes by client's requirements. 
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="lg:w-1/3 sm:w-1/2 p-4 slideLeft-animate delay-200">
+              <div class="flex relative">
+                <img
+                  loading="lazy"
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="assets/images/works/1.jpg"
+                  data-src="assets/images/works/1.jpg"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100 transition duration-500 ease-in-out"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-green-500 mb-1"
+                  >
+                    WEBSITE CATEGORY
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-white mb-3">
+                    Portfolio Website
+                  </h1>
+                  <p class="leading-relaxed">
+                    A professional web designer & web developer personal portfolio website.
+                  </p>
+                  <a href= "https://mohdroman.github.io/mohdroman/" target="_blank" class="text-green-500 inline-flex items-center"
+                    >Learn More
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4 slideUp-animate delay-200">
+              <div class="flex relative">
+                <img
+                  loading="lazy"
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="assets/images/works/2.jpg"
+                  data-src="assets/images/works/2.jpg"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100 transition duration-500 ease-in-out"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-green-500 mb-1"
+                  >
+                    WEBSITE CATEGORY
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-white mb-3">
+                    Portfolio Website
+                  </h1>
+                  <p class="leading-relaxed">
+                    A professional video editor personal portfolio website for business.
+                  </p>
+                  <a href= "https://mohdroman.github.io/mohdroman/" target="_blank" class="text-green-500 inline-flex items-center"
+                    >Learn More
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4 slideRight-animate delay-200">
+              <div class="flex relative">
+                <img
+                  loading="lazy"
+                  alt="gallery"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  src="assets/images/works/3.jpg"
+                  data-src="assets/images/works/3.jpg"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100 transition duration-500 ease-in-out"
+                >
+                  <h2
+                    class="tracking-widest text-sm title-font font-medium text-green-500 mb-1"
+                  >
+                    WEBSITE CATEGORY
+                  </h2>
+                  <h1 class="title-font text-lg font-medium text-white mb-3">
+                    Portfolio Website
+                  </h1>
+                  <p class="leading-relaxed">
+                    A shopfy web developer personal portfolio website.
+                  </p>
+                  <a href= "https://mohdroman.github.io/mohdroman/" target="_blank" class="text-green-500 inline-flex items-center"
+                    >Learn More
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+      </section>
+
+     
+      
+
+      <!-- Contact Us -->
+      <section class="text-gray-500 bg-gray-800 body-font relative" id="contact" data-scroll="in">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h2 class="text-4xl md:text-5xl text-white text-center font-bold p-10 mb-10 title">
+              Contact Us
+            </h2>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Looking forward to working with you!<br>
+              If you have any queries then feel free to contact with me. :)
+            </p>
+          </div>
+          <div class="lg:w-1/2 md:w-2/3 mx-auto slideUp-animate">
+            <div class="-m-2">
+              <form action="https://formspree.io/officialroman786@gmail.com" method="post" class="flex flex-wrap">
+                <div class="p-2 w-1/2">
+                  <label for="name">Name</label>
+                  <input class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-green-500 text-base px-4 py-2 mt-1" id="name" name="name" type="text" required="">
+                </div>
+                <div class="p-2 w-1/2">
+                  <label for="email">Email</label>
+                  <input class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-green-500 text-base px-4 py-2 mt-1" id="email" name="email" type="email" required="">
+                </div>
+                <div class="p-2 w-full">
+                  <label for="msg">Message</label>
+                  <textarea class="w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none h-48 focus:border-green-500 text-base px-4 py-2 resize-none block mt-1" id="msg" name="message" required=""></textarea>
+                </div>
+                <div class="p-2 w-full">
+                  <button type="submit" class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+                    Send
+                  </button>
+                </div>
+              </form>
+              <div class="p-2 w-full pt-8 mt-8 border-t border-gray-800 text-center">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- CTA -->
+    <section class="text-gray-500 bg-gray-900 body-font" data-scroll>
+      <div class="container px-5 py-24 mx-auto">
+        <div
+          class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+        >
+          <h1
+            class="flex-grow sm:pr-16 text-2xl font-medium title-font text-white"
+          >
+          Are you need a professional web designer & developer then you can hire me.
+          </h1>
+          <a
+            href="https://fiverr.com/mohd_roman"
+            class="flex-shrink-0 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-10 sm:mt-0"
+          >
+            Hire Me
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+    <!-- Footer -->
+    <footer class="text-gray-500 bg-gray-800 body-font" data-scroll>
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          href="#"
+          class="flex title-font font-medium items-center md:justify-start justify-center text-white"
+        >
+          <span class="ml-2 text-xl">Mohd Roman</span>
+        </a>
+        <p
+          class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
+          data-splitting
+        >
+          © 2020 Mohd Roman —
+          <a
+            href="mohd_roman7"
+            class="text-gray-500 ml-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@mohd_roman7</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a 
+          href="https://www.facebook.com/mohd.roman.16547" target="_blank"
+            class="text-gray-600">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a 
+          href="https://www.twitter.com/mohd_roman7" target="_blank"
+            class="ml-3 text-gray-600">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a 
+            href="https://www.instagram.com/mohd_roman7" target="_blank"
+            class="ml-3 text-gray-600">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/" target="_blank"
+            class="ml-3 text-gray-600">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+  </body>
+  <script async src="assets/js/scroll-out.min.js"></script>
+  <script async src="assets/js/splitting-lite.min.js"></script>
+  <script async src="assets/js/glide.min.js"></script>
+  <script async src="assets/js/main.js"></script>
+</html>
